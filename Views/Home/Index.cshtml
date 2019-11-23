@@ -1,4 +1,4 @@
-﻿@model Search.Models.YemekSepeti
+﻿@model Search.Models.FoodBasket
 @{
     Layout = null;
 }
@@ -18,14 +18,12 @@
             $.ajax({
                 type: "POST",
                 url: "/Home/Index",
-                data: '{id: "' + $("#Yemek_Adi").val() + '" }',
+                data: '{id: "' + $("#Food_Name").val() + '" }',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    document.getElementById("Yemek_Adim").value = response.Yemek_Adi;
-                    document.getElementById("Yemek_Fiyatim").value = response.Fiyat;
-                 
-               
+                    document.getElementById("Yemek_Adim").value = response.Food_Name;
+                    document.getElementById("Yemek_Fiyatim").value = response.Food_Price;
                 },
                 failure: function (response) {
                     alert(response.responseText);
@@ -37,9 +35,6 @@
         });
     });
     </script>
-
-
-    
 </head>
 <body>
     <div> 
@@ -52,10 +47,8 @@
                 <hr />
 
                 <div class="form-group">
-
                     <div class="col-md-12">
-                        @Html.EditorFor(model => model.Yemek_Adi, new { htmlAttributes = new { @class = "form-control" } })
-
+                        @Html.EditorFor(model => model.Food_Name, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
                 </div>
 
@@ -64,9 +57,9 @@
  
         <button type="submit" name="btnGet" id="btnGet">Tıkla</button>
         <br />
-     Yemek Adı:  <input type="text" id="Yemek_Adim"  />
+        Yemek Adı:  <input type="text" id="Food_Name"  />
         <br />
-        Yemek Fiyatı: <input type="text" id="Yemek_Fiyatim" />
+        Yemek Fiyatı: <input type="text" id="Food_Price" />
     </div>
 </body>
 </html>
