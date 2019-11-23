@@ -7,29 +7,24 @@ using System.Web;
 
 namespace Search.Models
 {
-    public class YemekSepeti
+    public class FoodBasket
     {
         [Key]
-        public int Yemek_Id { get; set; }
+        public int Food_Id { get; set; }
 
-        public String Yemek_Adi { get; set; }
+        public String Food_Name { get; set; }
 
-        public double Fiyat { get; set; }
-        public YemekSepeti()
+        public double Price { get; set; }
+        
+        public FoodBasket()
         {
-            Yemek_Id = 0;
-            Yemek_Adi = "Test";
-            Fiyat = 0;
+            Food_Id = 0;
+            Food_Name = "Test";
+            Price = 0;
         }
     }
-
-  
-
     public class databaseContext:DbContext
     {
-        public DbSet<YemekSepeti> ContactYemekSepeti { get; set; }
+        public DbSet<FoodBasket> ContactFoodBasket { get; set; }
     }
-
-  
-
 }    
