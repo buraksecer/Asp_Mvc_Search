@@ -22,9 +22,9 @@ namespace Search.Controllers
         {
             if (id == null || id == "") id = 0;
 
-            int GelenId = Convert.ToInt32(id);
+            int requestId = Convert.ToInt32(id);
 
-            food = dbContext.ContactYemekSepeti.Where(b => b.Food_Id.Equals(GelenId)).FirstOrDefault();
+            food = dbContext.ContactYemekSepeti.Where(b => b.Food_Id.Equals(requestId)).FirstOrDefault();
 
             if (food == null) food = new FoodBasket();
 
