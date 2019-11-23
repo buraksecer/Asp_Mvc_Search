@@ -10,7 +10,7 @@ namespace Search.Controllers
     public class HomeController : Controller
     {
 
-        YemekSepeti yemek = new YemekSepeti();
+        FoodBasket food = new FoodBasket();
         databaseContext dbContext = new databaseContext();
         public ActionResult Index()
         {
@@ -24,11 +24,11 @@ namespace Search.Controllers
 
             int GelenId = Convert.ToInt32(id);
 
-            yemek = dbContext.ContactYemekSepeti.Where(b => b.Yemek_Id.Equals(GelenId)).FirstOrDefault();
+            food = dbContext.ContactYemekSepeti.Where(b => b.Food_Id.Equals(GelenId)).FirstOrDefault();
 
-            if (yemek == null) yemek = new YemekSepeti();
+            if (food == null) food = new FoodBasket();
 
-            return Json(yemek, JsonRequestBehavior.AllowGet);
+            return Json(food, JsonRequestBehavior.AllowGet);
         }
    
     }
